@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+//Vue.jsの反映を見るためのテストルーティング
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
