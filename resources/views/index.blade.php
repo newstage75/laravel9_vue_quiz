@@ -16,6 +16,10 @@
               <p>中間のパラグラフ</p>
             <hr>
             <dynamic-component></dynamic-component>
+            <hr>
+            <hr>
+            <my-component></my-component>
+
         </div>
 
     <script src="{{ mix('/js/app.js') }}"></script>
