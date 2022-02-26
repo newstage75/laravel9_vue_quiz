@@ -1,0 +1,10 @@
+body {
+  margin: 30px;
+  }
+
+  .box {
+  width: 30px;
+  height: 30px;
+  background: teal;
+  margin-top: 20px;
+  }
