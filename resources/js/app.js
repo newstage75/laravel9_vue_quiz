@@ -1,5 +1,11 @@
 require('./bootstrap');
 
+import Alpine from 'alpinejs';
+
+window.Alpine = Alpine;
+
+Alpine.start();
+
 //Vue.jsとVueコンポーネント(Sample.vue)を使用するように定義
 import Vue from 'vue'
 import Sample from './components/Sample.vue'
