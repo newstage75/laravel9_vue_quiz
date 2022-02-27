@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 //Vue.jsの反映を見るためのテストルーティング
 Route::get('/hello', function () {
@@ -25,3 +25,6 @@ Route::get('/hello', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+//やんばるアプリから
+Route::get('/', 'App\Http\Controllers\ArticleController@index');
