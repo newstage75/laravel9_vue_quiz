@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name')->unique(); //20220228ユニークへ変更
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password')->unique(); //20220228ユニークへ変更
+            $table->string('password')->nullable(); //20220228ユニークへ変更
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
