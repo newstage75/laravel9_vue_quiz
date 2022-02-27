@@ -17,8 +17,9 @@
             <hr>
             <dynamic-component></dynamic-component>
             <hr>
-            <hr>
             <my-component></my-component>
+            <hr>
+            <my-vue-kyoshitu></my-vue-kyoshitu>
 
         </div>
 
