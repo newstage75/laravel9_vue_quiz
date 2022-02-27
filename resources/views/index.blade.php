@@ -20,6 +20,8 @@
             <my-component></my-component>
             <hr>
             <my-vue-kyoshitu></my-vue-kyoshitu>
+            <hr>
+            <my-showtime></my-showtime>
 
         </div>
 
