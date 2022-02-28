@@ -17,4 +17,10 @@ public function index()
     return view('articles.index', ['articles' => $articles]);
   }
   //==========ここまで追加==========
+
+  public function create()
+  {
+      return view('articles.create');
+  }
+
 }

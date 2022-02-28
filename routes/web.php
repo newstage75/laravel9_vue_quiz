@@ -26,4 +26,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 //やんばるアプリから
-Route::get('/', 'App\Http\Controllers\ArticleController@index');
+Route::get('/', 'App\Http\Controllers\ArticleController@index')->name('articles.index');
+//リソースルートの追加
+Route::resource('/articles', 'App\Http\Controllers\ArticleController')->except(['index'])->middleware('auth'); //-- この行を編集
