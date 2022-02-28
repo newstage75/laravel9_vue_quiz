@@ -24,8 +24,10 @@ public function index()
       return view('articles.create');
   }
 
-  public function store(ArticleRequest $request, Article $article)
+  // public function store(ArticleRequest $request, Article $article)
+  public function store(ArticleRequest $request)
   {
+      $article = new Article();
       $article->title = $request->title;
       $article->body = $request->body;
       $article->user_id = $request->user()->id;
