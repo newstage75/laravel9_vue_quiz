@@ -9,6 +9,13 @@ use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
+
+ //コンストラクタ
+  public function __construct()
+  {
+      $this->authorizeResource(Article::class, 'article');
+  }
+
   //==========ここから追加==========
 public function index()
 {
@@ -55,6 +62,6 @@ public function index()
   public function show(Article $article)
   {
       return view('articles.show', ['article' => $article]);
-  }    
+  }
 
 }

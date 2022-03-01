@@ -16,9 +16,9 @@ class ArticlePolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function viewAny(User $user)
+    public function viewAny(?User $user) //-- この行を変更(Userの前に?を付ける)未ログインユーザーを考慮
     {
-        //
+          return true;
     }
 
     /**
@@ -28,9 +28,9 @@ class ArticlePolicy
      * @param  \App\Models\Article  $article
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Article $article)
+    public function view(?User $user, Article $article) //-- この行を変更(Userの前に?を付ける)未ログインユーザーを考慮
     {
-        //
+          return true;
     }
 
     /**
@@ -41,7 +41,7 @@ class ArticlePolicy
      */
     public function create(User $user)
     {
-        //
+          return true;
     }
 
     /**
@@ -53,7 +53,7 @@ class ArticlePolicy
      */
     public function update(User $user, Article $article)
     {
-        //
+        return $user->id === $article->user_id;
     }
 
     /**
@@ -65,7 +65,7 @@ class ArticlePolicy
      */
     public function delete(User $user, Article $article)
     {
-        //
+        return $user->id === $article->user_id;
     }
 
     /**
