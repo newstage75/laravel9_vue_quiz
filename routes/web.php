@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ArticleController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,7 +27,11 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 //やんばるアプリから
-Route::get('/', 'App\Http\Controllers\ArticleController@index')->name('articles.index');
+Route::get('/', [ArticleController::class,'index'])->name('articles.index');
 //リソースルートの追加
-Route::resource('/articles', 'App\Http\Controllers\ArticleController')->except(['index', 'show'])->middleware('auth'); //-- この行を編集
-Route::resource('/articles', 'App\Http\Controllers\ArticleController')->only(['show']);
+Route::resource('/articles', ArticleController::class)->except(['index', 'show'])->middleware('auth'); //-- この行を編集
+Route::resource('/articles', ArticleController::class)->only(['show']);
+Route::prefix('articles')->name('articles.')->group(function () {
+    Route::put('/{article}/like', [ArticleController::class,'like'])->name('like')->middleware('auth');
+    Route::delete('/{article}/like', [ArticleController::class,'unlike'])->name('unlike')->middleware('auth');
+});
