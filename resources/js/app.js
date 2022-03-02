@@ -1,4 +1,5 @@
-require('./bootstrap');
+// require('./bootstrap');
+import './bootstrap'
 
 import Alpine from 'alpinejs';
 
@@ -13,12 +14,15 @@ import DynamicComponent from './components/DynamicComponent.vue'
 import MyComponent from './components/MyComponent.vue'
 import MyVueKyoshitu from './components/MyVueKyoshitu.vue'
 import MyShowtime from './components/MyShowtime.vue'
+import ArticleLike from './components/ArticleLike'
+
 
 Vue.component('sample-component',require('./components/Sample.vue').default);
 Vue.component('dynamic-component',require('./components/DynamicComponent.vue').default);
 Vue.component('my-component',require('./components/MyComponent.vue').default);
 Vue.component('my-vue-kyoshitu',require('./components/MyVueKyoshitu.vue').default);
 Vue.component('my-showtime',require('./components/MyShowtime.vue').default);
+Vue.component('article-like',require('./components/ArticleLike.vue').default);
 
 const app = new Vue({
     el: '#app',
@@ -27,6 +31,7 @@ const app = new Vue({
         DynamicComponent,
         MyComponent,
         MyVueKyoshitu,
-        MyShowtime
+        MyShowtime,
+        ArticleLike,
     }
 });
