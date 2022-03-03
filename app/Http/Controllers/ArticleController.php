@@ -29,7 +29,14 @@ public function index()
 
   public function create()
   {
-      return view('articles.create');
+    //タグの自動補完のために、全てのタグ情報をBladeに渡す
+    $allTagNames = Tag::all()->map(function ($tag) {
+        return ['text' => $tag->name];
+    });
+
+    return view('articles.create', [
+        'allTagNames' => $allTagNames,
+    ]);
   }
 
   public function store(ArticleRequest $request, Article $article)
@@ -54,9 +61,14 @@ public function index()
       return ['text' => $tag->name];
     });
 
+    $allTagNames = Tag::all()->map(function ($tag) {
+        return ['text' => $tag->name];
+    });
+
     return view('articles.edit', [
         'article' => $article,
         'tagNames' => $tagNames,
+        'allTagNames' => $allTagNames,
     ]);
   }
 
