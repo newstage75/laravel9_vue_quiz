@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\Tag;
 use App\Http\Requests\ArticleRequest;
 
 use Illuminate\Http\Request;
@@ -31,14 +32,18 @@ public function index()
       return view('articles.create');
   }
 
-  // public function store(ArticleRequest $request, Article $article)
-  public function store(ArticleRequest $request)
+  public function store(ArticleRequest $request, Article $article)
   {
-      $article = new Article();
       $article->title = $request->title;
       $article->body = $request->body;
       $article->user_id = $request->user()->id;
       $article->save();
+
+      $request->tags->each(function ($tagName) use ($article) {
+          $tag = Tag::firstOrCreate(['name' => $tagName]);
+          $article->tags()->attach($tag);
+      });
+
       return redirect()->route('articles.index');
   }
 
